@@ -1,21 +1,28 @@
-# ORM Library for Java
+# 🚀 ORM Library for Java
 
-## Overview
+![Java](https://img.shields.io/badge/Java-17%2B-blue?logo=java)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-This is a lightweight and efficient Object-Relational Mapping (ORM) library for Java, designed to simplify database interactions by mapping Java objects to database tables. It provides an intuitive API for performing CRUD operations, managing relationships, and executing complex queries with minimal boilerplate code.
+**ORM Library for Java** is a lightweight, efficient, and developer-friendly Object-Relational Mapping (ORM) tool designed to simplify database interactions in Java applications. It allows you to map Java objects to database tables seamlessly, reducing boilerplate code and improving productivity.
 
-## Features
+---
 
-- **Entity Mapping**: Automatically map Java classes to database tables.
-- **CRUD Operations**: Easily create, read, update, and delete records.
-- **Relationships**: Support for one-to-one, one-to-many, and many-to-many relationships.
-- **Query Builder**: Build complex SQL queries using a fluent API.
-- **Transactions**: Manage database transactions with ease.
-- **Connection Pooling**: Built-in support for connection pooling to improve performance.
-- **Database Agnostic**: Works with multiple databases (MySQL, PostgreSQL, SQLite, etc.).
-- **Lightweight**: Minimal dependencies and fast execution.
+## ✨ Features
 
-## Installation
+- **📦 Entity Mapping**: Automatically map Java classes to database tables.
+- **🛠️ CRUD Operations**: Perform Create, Read, Update, and Delete operations with ease.
+- **🔗 Relationships**: Supports **one-to-one**, **one-to-many**, and **many-to-many** relationships.
+- **🔍 Query Builder**: Build complex SQL queries using a fluent and intuitive API.
+- **💾 Transactions**: Manage database transactions effortlessly.
+- **🌐 Database Agnostic**: Compatible with **MySQL**, **PostgreSQL**, **SQLite**, and more.
+- **⚡ Lightweight**: Minimal dependencies and optimized for performance.
+- **🔒 Connection Pooling**: Built-in support for efficient database connections.
+
+---
+
+## 🛠️ Installation
 
 ### Maven
 
@@ -26,5 +33,5 @@ Add the following dependency to your `pom.xml`:
     <groupId>com.example</groupId>
     <artifactId>orm-library</artifactId>
     <version>1.0.0</version>
-</dependency
+</dependency>
 ```
