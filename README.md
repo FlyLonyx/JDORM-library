@@ -35,3 +35,23 @@ Add the following dependency to your `pom.xml`:
     <version>1.0.0</version>
 </dependency>
 ```
+### Gradle
+
+Add the following to your `build.gradle`:
+
+```gradle
+dependencies {
+    implementation 'com.votreorganisation:java-orm-library:1.0.0'
+}
+```
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Please read the [Contributing Guidelines](https://github.com) to get started.
+
+## 📜 License
+This project is licensed under the **MIT License**. See the [LICENSE](https://github.com) file for details.
+
+## 💡 Support
+If you find this project helpful, consider giving it a ⭐️ on GitHub! For any issues or feature requests, please open an  [issue](https://github.com).
