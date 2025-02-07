@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="107dbe8b-abd7-4f37-9c3b-3c823907f522" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/CreatePersonsTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/AddEmailToPersons.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/CreatePersonsTable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Schema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Schema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/migrations/AddEmailToPersons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/AddEmailToPersons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/migrations/CreatePersonsTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Table.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

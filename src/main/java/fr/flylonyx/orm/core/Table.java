@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Table {
     private final List<String> columns = new ArrayList<>();
+    private final List<String> foreignKeys = new ArrayList<>();
+
 
     public Table intColumn(String name, boolean autoIncrement, boolean primaryKey) {
         String definition = name + " INT";
@@ -13,6 +15,7 @@ public class Table {
         columns.add(definition);
         return this;
     }
+
 
     public Table bigInt(String name) {
         columns.add(name + " BIGINT");
@@ -99,7 +102,18 @@ public class Table {
         return this;
     }
 
+    public Table foreignKey(String column, String referencedTable, String referencedColumn) {
+        foreignKeys.add("FOREIGN KEY (" + column + ") REFERENCES " + referencedTable + "(" + referencedColumn + ")");
+        return this;
+    }
+
     public String build() {
-        return String.join(", ", columns);
+        String sql = String.join(", ", columns);
+
+        if (!foreignKeys.isEmpty()) {
+            sql += ", " + String.join(", ", foreignKeys);
+        }
+
+        return sql;
     }
 }

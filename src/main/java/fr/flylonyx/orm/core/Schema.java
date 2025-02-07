@@ -40,4 +40,19 @@ public class Schema {
             stmt.execute(sql);
         }
     }
+
+    public void addForeignKey(@NonNull String tableName, @NonNull String columnName, @NonNull String referencedTable, @NonNull String referencedColumn) throws SQLException {
+        String sql = "ALTER TABLE " + tableName + " ADD CONSTRAINT fk_" + tableName + "_" + columnName +
+                " FOREIGN KEY (" + columnName + ") REFERENCES " + referencedTable + "(" + referencedColumn + ")";
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute(sql);
+        }
+    }
+
+    public void dropForeignKey(@NonNull String tableName, @NonNull String foreignKeyName) throws SQLException {
+        String sql = "ALTER TABLE " + tableName + " DROP FOREIGN KEY " + foreignKeyName;
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute(sql);
+        }
+    }
 }
