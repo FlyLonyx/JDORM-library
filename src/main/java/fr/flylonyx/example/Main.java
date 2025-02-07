@@ -9,6 +9,7 @@ import fr.flylonyx.example.models.Person;
 import fr.flylonyx.library.core.MigrationManager;
 import fr.flylonyx.library.core.Schema;
 import fr.flylonyx.library.database.Connection;
+import fr.flylonyx.library.utils.Operations;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -110,19 +111,19 @@ public class Main {
 
         // Récupérer toutes les personnes actives
         List<Person> activePersons = Person.query(Person.class)
-                .where("is_active", "=", true)
+                .where("is_active", Operations.EQUALS, true)
                 .execute();
         System.out.println("Active Persons: " + activePersons);
 
         // Récupérer une personne par son email
         Person personByEmail = Person.query(Person.class)
-                .where("email", "=", "john.doe@example.com")
+                .where("email", Operations.EQUALS, "john.doe@example.com")
                 .first();
         System.out.println("Person by Email: " + personByEmail);
 
         // Récupérer les personnes avec un salaire supérieur à 50000
         List<Person> highSalaryPersons = Person.query(Person.class)
-                .where("salary", ">", 50000)
+                .where("salary", Operations.EQUALS, 50000)
                 .execute();
         System.out.println("High Salary Persons: " + highSalaryPersons);
 
@@ -164,25 +165,25 @@ public class Main {
 
         // Récupérer les adresses d'une personne spécifique
         List<Address> personAddresses = Address.query(Address.class)
-                .where("person_id", "=", person1.getId())
+                .where("person_id", Operations.EQUALS, person1.getId())
                 .execute();
         System.out.println("Person Addresses: " + personAddresses);
 
         // Récupérer les adresses avec une jointure sur la table des personnes
         List<Address> addressesWithJoin = Address.query(Address.class)
-                .join("persons", "addresses.person_id", "=", "persons.id")
+                .join("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Join: " + addressesWithJoin);
 
         // Récupérer les adresses avec une jointure gauche sur la table des personnes
         List<Address> addressesWithLeftJoin = Address.query(Address.class)
-                .leftJoin("persons", "addresses.person_id", "=", "persons.id")
+                .leftJoin("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Left Join: " + addressesWithLeftJoin);
 
         // Récupérer les adresses avec une jointure droite sur la table des personnes
         List<Address> addressesWithRightJoin = Address.query(Address.class)
-                .rightJoin("persons", "addresses.person_id", "=", "persons.id")
+                .rightJoin("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Right Join: " + addressesWithRightJoin);
 
@@ -195,7 +196,7 @@ public class Main {
         // Récupérer les adresses avec une condition HAVING
         List<Address> addressesHavingCondition = Address.query(Address.class)
                 .groupBy("city")
-                .having("COUNT(city)", ">", 1)
+                .having("COUNT(city)", Operations.GREATER_THAN, 1)
                 .execute();
         System.out.println("Addresses with HAVING Condition: " + addressesHavingCondition);
 

@@ -4,6 +4,7 @@ package fr.flylonyx.library.core;
 import fr.flylonyx.library.annotations.Column;
 import fr.flylonyx.library.annotations.Table;
 import fr.flylonyx.library.database.Connection;
+import fr.flylonyx.library.utils.Operations;
 
 import java.lang.reflect.Field;
 import java.sql.*;
@@ -23,15 +24,15 @@ public class QueryBuilder<T extends Model> {
     }
 
 
-    public QueryBuilder<T> where(String column, String operator, Object value) {
+    public QueryBuilder<T> where(String column, Operations operator, Object value) {
         query.append(query.toString().contains(" WHERE ") ? " AND " : " WHERE ")
-                .append(column).append(" ").append(operator).append(" ?");
+                .append(column).append(" ").append(operator.getOperations()).append(" ?");
         parameters.add(value);
         return this;
     }
 
-    public QueryBuilder<T> orWhere(String column, String operator, Object value) {
-        query.append(" OR ").append(column).append(" ").append(operator).append(" ?");
+    public QueryBuilder<T> orWhere(String column, Operations operator, Object value) {
+        query.append(" OR ").append(column).append(" ").append(operator.getOperations()).append(" ?");
         parameters.add(value);
         return this;
     }
@@ -52,21 +53,21 @@ public class QueryBuilder<T extends Model> {
         return this;
     }
 
-    public QueryBuilder<T> join(String table, String first, String operator, String second) {
+    public QueryBuilder<T> join(String table, String first, Operations operator, String second) {
         query.append(" JOIN ").append(table)
-                .append(" ON ").append(first).append(" ").append(operator).append(" ").append(second);
+                .append(" ON ").append(first).append(" ").append(operator.getOperations()).append(" ").append(second);
         return this;
     }
 
-    public QueryBuilder<T> leftJoin(String table, String first, String operator, String second) {
+    public QueryBuilder<T> leftJoin(String table, String first, Operations operator, String second) {
         query.append(" LEFT JOIN ").append(table)
-                .append(" ON ").append(first).append(" ").append(operator).append(" ").append(second);
+                .append(" ON ").append(first).append(" ").append(operator.getOperations()).append(" ").append(second);
         return this;
     }
 
-    public QueryBuilder<T> rightJoin(String table, String first, String operator, String second) {
+    public QueryBuilder<T> rightJoin(String table, String first, Operations operator, String second) {
         query.append(" RIGHT JOIN ").append(table)
-                .append(" ON ").append(first).append(" ").append(operator).append(" ").append(second);
+                .append(" ON ").append(first).append(" ").append(operator.getOperations()).append(" ").append(second);
         return this;
     }
 
@@ -75,8 +76,8 @@ public class QueryBuilder<T extends Model> {
         return this;
     }
 
-    public QueryBuilder<T> having(String column, String operator, Object value) {
-        query.append(" HAVING ").append(column).append(" ").append(operator).append(" ?");
+    public QueryBuilder<T> having(String column, Operations operator, Object value) {
+        query.append(" HAVING ").append(column).append(" ").append(operator.getOperations()).append(" ?");
         parameters.add(value);
         return this;
     }

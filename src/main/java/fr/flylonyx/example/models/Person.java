@@ -3,6 +3,7 @@ package fr.flylonyx.example.models;
 import fr.flylonyx.library.annotations.Column;
 import fr.flylonyx.library.annotations.Table;
 import fr.flylonyx.library.core.Model;
+import fr.flylonyx.library.utils.Operations;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +43,7 @@ public class Person extends Model {
     public List<Address> getAddresses() {
         try {
             return Address.query(Address.class)
-                    .where("person_id", "=", id)
+                    .where("person_id", Operations.EQUALS, id)
                     .execute();
         } catch (Exception e) {
             throw new RuntimeException(e);
