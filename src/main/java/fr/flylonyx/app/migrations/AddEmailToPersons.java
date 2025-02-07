@@ -1,4 +1,4 @@
-package fr.flylonyx.orm.migrations;
+package fr.flylonyx.app.migrations;
 
 import fr.flylonyx.orm.core.Schema;
 

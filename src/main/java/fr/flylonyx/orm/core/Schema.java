@@ -13,13 +13,11 @@ public class Schema {
         this.connection = connection;
     }
 
-    public void create(@NonNull String tableName, @NonNull TableBuilder builder) throws SQLException {
-        StringBuilder sql = new StringBuilder("CREATE TABLE " + tableName + " (");
-        builder.build(sql);
-        sql.append(");");
+    public void create(@NonNull String tableName, @NonNull Table table) throws SQLException {
+        String sql = "CREATE TABLE " + tableName + " (" + table.build() + ");";
 
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute(sql.toString());
+            stmt.execute(sql);
         }
     }
 
@@ -41,10 +39,5 @@ public class Schema {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(sql);
         }
-    }
-
-    @FunctionalInterface
-    public interface TableBuilder {
-        void build(StringBuilder sql);
     }
 }

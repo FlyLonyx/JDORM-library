@@ -4,8 +4,8 @@ import fr.flylonyx.app.models.Person;
 import fr.flylonyx.orm.core.MigrationManager;
 import fr.flylonyx.orm.core.Schema;
 import fr.flylonyx.orm.database.DatabaseConnection;
-import fr.flylonyx.orm.migrations.AddEmailToPersons;
-import fr.flylonyx.orm.migrations.CreatePersonsTable;
+import fr.flylonyx.app.migrations.AddEmailToPersons;
+import fr.flylonyx.app.migrations.CreatePersonsTable;
 
 import java.sql.Connection;
 import java.util.List;
