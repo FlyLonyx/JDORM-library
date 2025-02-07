@@ -1,4 +1,4 @@
-package fr.flylonyx.orm.core;
+package fr.flylonyx.library.core;
 
 import java.util.ArrayList;
 import java.util.List;

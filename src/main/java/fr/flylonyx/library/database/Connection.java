@@ -1,21 +1,20 @@
-package fr.flylonyx.orm.database;
+package fr.flylonyx.library.database;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class Connection {
     private static String url = "jdbc:mysql://";
     private static String host = "localhost";
     private static String database = "db_name";
     private static String user = "root";
     private static String password = "";
 
-    private static Connection connection;
+    private static java.sql.Connection connection;
     private static final int MAX_RETRIES = 3;
     private static final int RETRY_DELAY = 3000;
 
-    public static Connection getConnection() throws SQLException {
+    public static java.sql.Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             int retries = 0;
             while (retries < MAX_RETRIES) {

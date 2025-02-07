@@ -1,8 +1,8 @@
-package fr.flylonyx.orm.core;
+package fr.flylonyx.library.core;
 
-import fr.flylonyx.orm.annotations.Column;
-import fr.flylonyx.orm.annotations.Table;
-import fr.flylonyx.orm.database.DatabaseConnection;
+import fr.flylonyx.library.annotations.Column;
+import fr.flylonyx.library.annotations.Table;
+import fr.flylonyx.library.database.Connection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -31,7 +31,7 @@ public abstract class Model {
         String values = String.join(", ", fields.values().stream().map(v -> "?").toArray(String[]::new));
         String sql = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
 
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             int i = 1;
             for (Object value : fields.values()) {
                 stmt.setObject(i++, value);
@@ -66,7 +66,7 @@ public abstract class Model {
         String setClause = String.join(", ", fields.keySet().stream().map(k -> k + " = ?").toArray(String[]::new));
         String sql = "UPDATE " + tableName + " SET " + setClause + " WHERE id = ?";
 
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(sql)) {
             int i = 1;
             for (Object value : fields.values()) {
                 stmt.setObject(i++, value);
@@ -83,7 +83,7 @@ public abstract class Model {
         String tableName = table.name();
         String sql = "DELETE FROM " + tableName + " WHERE id = ?";
 
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(sql)) {
             Field idField = this.getClass().getDeclaredField("id");
             idField.setAccessible(true);
             stmt.setInt(1, (int) idField.get(this));
@@ -98,7 +98,7 @@ public abstract class Model {
         String tableName = table.name();
         String sql = "SELECT * FROM " + tableName + " WHERE id = ?";
 
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(sql)) {
             stmt.setInt(1, id);
 
             try (ResultSet rs = stmt.executeQuery()) {

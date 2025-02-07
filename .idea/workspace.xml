@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="107dbe8b-abd7-4f37-9c3b-3c823907f522" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/AddEmailToPersons.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/migrations/CreatePersonsTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Schema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Schema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/app/models/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/annotations/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/annotations/Column.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/annotations/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/annotations/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/MigrationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/core/MigrationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/core/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/QueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/core/sql/QueryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Schema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/core/sql/Schema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/core/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/core/sql/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/flylonyx/orm/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/flylonyx/library/database/DatabaseConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +91,11 @@
 }</component>
   <component name="RunManager" selected="Gradle.JDORM [build]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fr.flylonyx.app.Main" />
+      <option name="MAIN_CLASS_NAME" value="fr.flylonyx.example.Main" />
       <module name="JDORM.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.flylonyx.app.*" />
+          <option name="PATTERN" value="fr.flylonyx.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

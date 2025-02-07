@@ -1,7 +1,7 @@
-package fr.flylonyx.orm.core;
+package fr.flylonyx.library.core;
 
 
-import fr.flylonyx.orm.database.DatabaseConnection;
+import fr.flylonyx.library.database.Connection;
 import lombok.NonNull;
 
 import java.sql.*;
@@ -12,7 +12,7 @@ public class MigrationManager {
     private static final String MIGRATIONS_TABLE = "migrations_test";
 
     public static void initialize() throws SQLException {
-        try (Statement statement = DatabaseConnection.getConnection().createStatement()) {
+        try (Statement statement = Connection.getConnection().createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS " + MIGRATIONS_TABLE + " (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
                     "migration_name VARCHAR(255) NOT NULL, " +
@@ -24,7 +24,7 @@ public class MigrationManager {
         List<String> executedMigrations = new ArrayList<>();
         String query = "SELECT migration_name FROM " + MIGRATIONS_TABLE;
 
-        try (Statement stmt = DatabaseConnection.getConnection().createStatement();
+        try (Statement stmt = Connection.getConnection().createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 executedMigrations.add(rs.getString("migration_name"));
@@ -66,7 +66,7 @@ public class MigrationManager {
 
     private static boolean isMigrationExecuted(@NonNull String migrationName) throws SQLException {
         String query = "SELECT COUNT(*) FROM " + MIGRATIONS_TABLE + " WHERE migration_name = ?";
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(query)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {
             stmt.setString(1, migrationName);
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -80,7 +80,7 @@ public class MigrationManager {
 
     private static void logMigration(@NonNull String migrationName) throws SQLException {
         String query = "INSERT INTO " + MIGRATIONS_TABLE + " (migration_name) VALUES (?)";
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(query)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {
             stmt.setString(1, migrationName);
             stmt.executeUpdate();
         }
@@ -88,7 +88,7 @@ public class MigrationManager {
 
     private static void removeMigrationLog(@NonNull String migrationName) throws SQLException {
         String query = "DELETE FROM " + MIGRATIONS_TABLE + " WHERE migration_name = ?";
-        try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(query)) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {
             stmt.setString(1, migrationName);
             stmt.executeUpdate();
         }

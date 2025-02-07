@@ -1,10 +1,9 @@
-package fr.flylonyx.orm.core;
+package fr.flylonyx.library.core;
 
 
-import fr.flylonyx.orm.annotations.Column;
-import fr.flylonyx.orm.annotations.Table;
-import fr.flylonyx.orm.database.DatabaseConnection;
-import lombok.NonNull;
+import fr.flylonyx.library.annotations.Column;
+import fr.flylonyx.library.annotations.Table;
+import fr.flylonyx.library.database.Connection;
 
 import java.lang.reflect.Field;
 import java.sql.*;
@@ -110,7 +109,7 @@ public class QueryBuilder<T extends Model> {
 
     public List<T> execute() throws Exception {
         List<T> results = new ArrayList<>();
-        try (Statement stmt = DatabaseConnection.getConnection().createStatement();
+        try (Statement stmt = Connection.getConnection().createStatement();
              ResultSet rs = stmt.executeQuery(query.toString())) {
 
             while (rs.next()) {

@@ -1,4 +1,4 @@
-package fr.flylonyx.orm.annotations;
+package fr.flylonyx.library.annotations;
 
 import java.lang.annotation.*;
 

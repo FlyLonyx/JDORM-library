@@ -1,4 +1,4 @@
-package fr.flylonyx.orm.core;
+package fr.flylonyx.library.core;
 
 import lombok.NonNull;
 
