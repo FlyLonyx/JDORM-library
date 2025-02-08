@@ -11,6 +11,13 @@ import java.util.List;
 public class MigrationManager {
     private static final String MIGRATIONS_TABLE = "migrations_test";
 
+    /**
+     * Initializes the migrations table by creating it if it does not already exist.
+     * This method uses the existing database connection obtained from Connection.getConnection().
+     * An SQL exception may be thrown if there is an issue executing the create table command.
+     *
+     * @throws SQLException if an error occurs during table creation.
+     */
     public static void initialize() throws SQLException {
         try (Statement statement = Connection.getConnection().createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS " + MIGRATIONS_TABLE + " (" +
@@ -20,6 +27,12 @@ public class MigrationManager {
         }
     }
 
+    /**
+     * Retrieves a list of executed migration names from the database.
+     *
+     * @return A list of strings representing the names of executed migrations.
+     * @throws SQLException If an SQL exception occurs while accessing the database.
+     */
     public static List<String> getExecutedMigrations() throws SQLException {
         List<String> executedMigrations = new ArrayList<>();
         String query = "SELECT migration_name FROM " + MIGRATIONS_TABLE;
@@ -33,6 +46,14 @@ public class MigrationManager {
         return executedMigrations;
     }
 
+    /**
+     * Applies a migration with the given migration name and runnable action.
+     * If the migration has already been executed, it will be skipped.
+     *
+     * @param migrationName The name of the migration to apply.
+     * @param upMigration The runnable action representing the migration to be applied.
+     * @throws SQLException If an error occurs while applying the migration.
+     */
     public static void applyMigration(@NonNull String migrationName, @NonNull Runnable upMigration) throws SQLException {
         if (isMigrationExecuted(migrationName)) {
             System.out.println("Migration " + migrationName + " already applied. Skipping...");
@@ -49,6 +70,13 @@ public class MigrationManager {
         }
     }
 
+    /**
+     * Rollback a migration by name using the provided downMigration logic.
+     *
+     * @param migrationName The name of the migration to rollback.
+     * @param downMigration The down migration logic to rollback the migration.
+     * @throws SQLException If an SQL exception occurs during the rollback process.
+     */
     public static void rollbackMigration(@NonNull String migrationName, @NonNull Runnable downMigration) throws SQLException {
         if (!isMigrationExecuted(migrationName)) {
             System.out.println("Migration " + migrationName + " was not applied. Skipping rollback...");
@@ -64,6 +92,13 @@ public class MigrationManager {
         }
     }
 
+    /**
+     * Checks if a migration with the given name has been executed.
+     *
+     * @param migrationName the name of the migration to check if executed
+     * @return true if the migration has been executed, false otherwise
+     * @throws SQLException if an SQL exception occurs during the execution
+     */
     private static boolean isMigrationExecuted(@NonNull String migrationName) throws SQLException {
         String query = "SELECT COUNT(*) FROM " + MIGRATIONS_TABLE + " WHERE migration_name = ?";
         try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {
@@ -78,6 +113,12 @@ public class MigrationManager {
         return false;
     }
 
+    /**
+     * Logs a migration by inserting the migration name into the migrations table.
+     *
+     * @param migrationName The name of the migration to be logged
+     * @throws SQLException if a database access error occurs or this method is called on a closed connection
+     */
     private static void logMigration(@NonNull String migrationName) throws SQLException {
         String query = "INSERT INTO " + MIGRATIONS_TABLE + " (migration_name) VALUES (?)";
         try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {
@@ -86,6 +127,13 @@ public class MigrationManager {
         }
     }
 
+    /**
+     * Removes the migration log entry for the specified migration name.
+     * This method deletes the entry from the database table MIGRATIONS_TABLE.
+     *
+     * @param migrationName The name of the migration to remove from the log
+     * @throws SQLException if a database error occurs during the deletion process
+     */
     private static void removeMigrationLog(@NonNull String migrationName) throws SQLException {
         String query = "DELETE FROM " + MIGRATIONS_TABLE + " WHERE migration_name = ?";
         try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query)) {

@@ -10,8 +10,20 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public abstract class Model {
 
+    /**
+     * Saves the current model instance to the database.
+     * Retrieves the table name from the class's @Table annotation.
+     * Maps fields annotated with @Column to corresponding column names and values.
+     * Constructs and executes an SQL INSERT query to save the model to the table.
+     * If the table has a generated primary key, sets the generated ID back to the model's id field.
+     *
+     * @throws SQLException if an SQL exception occurs during the save operation.
+     * @throws IllegalAccessException if access to a field is not allowed during reflection.
+     * @throws NoSuchFieldException if a field does not exist in the model class.
+     */
     public void save() throws SQLException, IllegalAccessException, NoSuchFieldException {
         Table table = this.getClass().getAnnotation(Table.class);
         if (table == null) throw new SQLException("Model must have a @Table annotation");
@@ -48,6 +60,15 @@ public abstract class Model {
     }
 
 
+    /**
+     * Updates the current model instance in the database.
+     * Retrieves the table name from the class's @Table annotation.
+     * Maps fields annotated with @Column to corresponding column names and values.
+     * Constructs and executes an SQL UPDATE query to update the model in the table based on its id.
+     *
+     * @throws SQLException if an SQL exception occurs during the update operation.
+     * @throws IllegalAccessException if access to a field is not allowed during reflection.
+     */
     public void update() throws SQLException, IllegalAccessException {
         Table table = this.getClass().getAnnotation(Table.class);
         if (table == null) throw new SQLException("Model must have a @Table annotation");
@@ -76,6 +97,15 @@ public abstract class Model {
         }
     }
 
+    /**
+     * Deletes the current model instance from the database based on its id.
+     * Retrieves the table name from the class's @Table annotation.
+     * Constructs and executes an SQL DELETE query to remove the model from the table.
+     *
+     * @throws SQLException if an SQL exception occurs during the delete operation.
+     * @throws NoSuchFieldException if the id field does not exist in the model class.
+     * @throws IllegalAccessException if access to the id field is not allowed during reflection.
+     */
     public void delete() throws SQLException, NoSuchFieldException, IllegalAccessException {
         Table table = this.getClass().getAnnotation(Table.class);
         if (table == null) throw new SQLException("Model must have a @Table annotation");
@@ -91,6 +121,18 @@ public abstract class Model {
         }
     }
 
+    /**
+     * Finds a model instance by its ID from the database.
+     *
+     * @param id the ID of the model instance to retrieve.
+     * @param clazz the class type of the model.
+     * @return the model instance found in the database or null if not found.
+     * @throws SQLException if an SQL exception occurs during retrieval.
+     * @throws NoSuchMethodException if a specified method cannot be found.
+     * @throws IllegalAccessException if access to a method is not allowed during reflection.
+     * @throws InvocationTargetException if an invoked method throws an exception.
+     * @throws InstantiationException if a specified class object cannot be instantiated.
+     */
     public static <T extends Model> T findById(int id, Class<T> clazz) throws SQLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Table table = clazz.getAnnotation(Table.class);
         if (table == null) throw new SQLException("Model must have a @Table annotation");
@@ -118,6 +160,12 @@ public abstract class Model {
         return null;
     }
 
+    /**
+     * Creates a QueryBuilder instance for the specified model class.
+     *
+     * @param clazz the class type of the model.
+     * @return a new QueryBuilder instance for building queries on the specified model class.
+     */
     public static <T extends Model> QueryBuilder<T> query(Class<T> clazz) {
         return new QueryBuilder<>(clazz);
     }
