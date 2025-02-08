@@ -28,6 +28,14 @@ public enum ColumnType {
     private final String baseType;
 
 
+    /**
+     * Formats the data type based on the provided length, precision, and scale parameters.
+     *
+     * @param length The length of the data type (applicable for VARCHAR and CHAR types). Can be null.
+     * @param precision The precision of the data type (applicable for DECIMAL type). Can be null.
+     * @param scale The scale of the data type (applicable for DECIMAL type). Can be null.
+     * @return The formatted data type string based on the specified parameters.
+     */
     public String formatType(Integer length, Integer precision, Integer scale) {
         if (this == VARCHAR || this == CHAR) {
             return baseType + "(" + length + ")";
