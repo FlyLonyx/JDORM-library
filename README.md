@@ -1,6 +1,5 @@
 # 🚀 ORM Library for Java
 
-![Java](https://img.shields.io/badge/Java-17%2B-blue?logo=java)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
