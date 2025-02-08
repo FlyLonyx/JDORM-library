@@ -5,7 +5,7 @@
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-**ORM Library for Java** is a lightweight, efficient, and developer-friendly Object-Relational Mapping (ORM) tool designed to simplify database interactions in Java applications. It allows you to map Java objects to database tables seamlessly, reducing boilerplate code and improving productivity.
+**ORM Library for Java** is a lightweight, efficient, and developer-friendly Object-Relational Mapping (ORM) tool designed to simplify mysql database interactions in Java applications. It allows you to map Java objects to database tables seamlessly, reducing boilerplate code and improving productivity.
 
 ---
 
@@ -13,36 +13,22 @@
 
 - **📦 Entity Mapping**: Automatically map Java classes to database tables.
 - **🛠️ CRUD Operations**: Perform Create, Read, Update, and Delete operations with ease.
-- **🔗 Relationships**: Supports **one-to-one**, **one-to-many**, and **many-to-many** relationships.
 - **🔍 Query Builder**: Build complex SQL queries using a fluent and intuitive API.
 - **💾 Transactions**: Manage database transactions effortlessly.
-- **🌐 Database Agnostic**: Compatible with **MySQL**, **PostgreSQL**, **SQLite**, and more.
 - **⚡ Lightweight**: Minimal dependencies and optimized for performance.
 - **🔒 Connection Pooling**: Built-in support for efficient database connections.
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Examples
 
-### Maven
+### Initialisation
 
-Add the following dependency to your `pom.xml`:
+Add the following code to your main class with your credentials :
 
-```xml
-<dependency>
-    <groupId>com.example</groupId>
-    <artifactId>orm-library</artifactId>
-    <version>1.0.0</version>
-</dependency>
-```
-### Gradle
-
-Add the following to your `build.gradle`:
-
-```gradle
-dependencies {
-    implementation 'com.votreorganisation:java-orm-library:1.0.0'
-}
+```java
+Connection.configure("jdbc:mysql://", "localhost", "my_database", "my_user", "my_password");
+java.sql.Connection connection = Connection.getConnection();
 ```
 
 ---
