@@ -1,6 +1,5 @@
 plugins {
     id("java")
-    `maven-publish`
 }
 
 group = "fr.flylonyx"
@@ -20,31 +19,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-
-            groupId = "fr.flylonyx"
-            artifactId = "JDORM"
-            version = "1.0.0"
-
-            pom {
-                name.set("JDORM")
-                description.set("Une bibliothèque Java")
-                url.set("https://github.com/FlyLonyx/JDORM-library")
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri("https://maven.pkg.github.com/FlyLonyx/JDORM-library")
-            credentials {
-                username = "FlyLonyx"
-                password = "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"
-            }
-        }
-    }
 }
