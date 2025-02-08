@@ -44,7 +44,7 @@ publishing {
             credentials {
                 // Forcer la conversion en String en utilisant `toString()` pour éviter le type mismatch
                 username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")).toString()
-                password = (project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")).toString()
+                password = (project.findProperty("gpr.token") ?: System.getenv("MY_GITHUB_TOKEN")).toString()
             }
         }
     }
