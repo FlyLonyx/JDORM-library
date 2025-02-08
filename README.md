@@ -1,6 +1,5 @@
 # 🚀 ORM Library for Java
 
-![Java](https://img.shields.io/badge/Java-17%2B-blue?logo=java)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
 ![Version](https://img.shields.io/badge/Version-1.0.0-orange)
@@ -39,11 +38,8 @@ MigrationManager.initialize();
 
 ---
 
-## 🤝 Contributing
-Contributions are welcome! Please read the [Contributing Guidelines](https://github.com) to get started.
-
 ## 📜 License
-This project is licensed under the **MIT License**. See the [LICENSE](https://github.com) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE]([https://github.com](https://github.com/FlyLonyx/JDORM-library/blob/main/LICENSE)) file for details.
 
 ## 💡 Support
-If you find this project helpful, consider giving it a ⭐️ on GitHub! For any issues or feature requests, please open an  [issue](https://github.com).
+If you find this project helpful, consider giving it a ⭐️ on GitHub! For any issues or feature requests, please open an  [issue]([https://github.com](https://github.com/FlyLonyx/JDORM-library/issues)).
