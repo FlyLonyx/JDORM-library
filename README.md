@@ -20,7 +20,11 @@
 
 ---
 
-## 🛠️ Examples
+## 🛠️ Installation
+
+### Library
+
+Install the library with the release buttons.
 
 ### Initialisation
 
@@ -29,6 +33,8 @@ Add the following code to your main class with your credentials :
 ```java
 Connection.configure("jdbc:mysql://", "localhost", "my_database", "my_user", "my_password");
 java.sql.Connection connection = Connection.getConnection();
+Schema schema = new Schema(connection);
+MigrationManager.initialize();
 ```
 
 ---
