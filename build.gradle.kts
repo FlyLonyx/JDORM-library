@@ -21,3 +21,31 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            groupId = "fr.flylonyx"
+            artifactId = "JDORM"
+            version = "1.0.0"
+
+            pom {
+                name.set("JDORM")
+                description.set("Une bibliothèque Java")
+                url.set("https://github.com/FlyLonyx/JDORM-library")
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/FlyLonyx/JDORM-library")  // Remplacez par votre URL GitHub Packages
+            credentials {
+                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")).toString()
+                password = (project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")).toString()
+            }
+        }
+    }
+}
