@@ -51,7 +51,7 @@ public class Main {
             }
         });
 
-        // Création d'une personne
+        // Creating a person
         Person person1 = new Person();
         person1.setFirstName("John");
         person1.setLastName("Doe");
@@ -63,7 +63,7 @@ public class Main {
         person1.setCreatedAt("2023-10-01 12:00:00");
         person1.save();
 
-        // Création d'une autre personne
+        // Creating another person
         Person person2 = new Person();
         person2.setFirstName("Jane");
         person2.setLastName("Smith");
@@ -75,32 +75,32 @@ public class Main {
         person2.setCreatedAt("2023-10-02 14:00:00");
         person2.save();
 
-        // Création d'une adresse pour la première personne
+        // Creating an address for the first person
         Address address1 = new Address();
         address1.setStreet("123 Main St");
         address1.setCity("New York");
         address1.setPersonId(person1.getId());
         address1.save();
 
-        // Création d'une adresse pour la deuxième personne
+        // Creating an address for the second person
         Address address2 = new Address();
         address2.setStreet("456 Elm St");
         address2.setCity("Los Angeles");
         address2.setPersonId(person2.getId());
         address2.save();
 
-        // Mise à jour d'une personne
+        // Updating a person
         person1.setSalary(55000.00);
         person1.update();
 
-        // Suppression d'une personne
+        // Deleting a person
         person2.delete();
 
-        // Afficher la liste des adresses d'une personne
+        // Displaying the list of addresses of a person
         List<Address> addresses = person1.getAddresses();
         addresses.forEach(System.out::println);
 
-        // Trouver une personne par son id
+        // Finding a person by their ID
         Person foundPerson = Person.findById(1, Person.class);
         if (foundPerson != null) {
             System.out.println("Found person by ID: " + foundPerson.getFirstName() + " " + foundPerson.getLastName());
@@ -108,98 +108,98 @@ public class Main {
             System.out.println("Person not found.");
         }
 
-        // Récupérer toutes les personnes actives
+        // Retrieving all active persons
         List<Person> activePersons = Person.query(Person.class)
                 .where("is_active", Operations.EQUALS, true)
                 .execute();
         System.out.println("Active Persons: " + activePersons);
 
-        // Récupérer une personne par son email
+        // Retrieving a person by their email
         Person personByEmail = Person.query(Person.class)
                 .where("email", Operations.EQUALS, "john.doe@example.com")
                 .first();
         System.out.println("Person by Email: " + personByEmail);
 
-        // Récupérer les personnes avec un salaire supérieur à 50000
+        // Retrieving persons with a salary greater than 50000
         List<Person> highSalaryPersons = Person.query(Person.class)
                 .where("salary", Operations.EQUALS, 50000)
                 .execute();
         System.out.println("High Salary Persons: " + highSalaryPersons);
 
-        // Récupérer les personnes avec un salaire entre 40000 et 60000
+        // Retrieving persons with a salary between 40000 and 60000
         List<Person> midSalaryPersons = Person.query(Person.class)
                 .whereBetween("salary", 40000, 60000)
                 .execute();
         System.out.println("Mid Salary Persons: " + midSalaryPersons);
 
-        // Récupérer les personnes avec un âge dans une liste spécifique
+        // Retrieving persons with a specific age from a list
         List<Person> specificAgePersons = Person.query(Person.class)
                 .whereIn("age", Arrays.asList(25, 30))
                 .execute();
         System.out.println("Specific Age Persons: " + specificAgePersons);
 
-        // Récupérer les personnes avec un tri par nom de famille
+        // Retrieving persons sorted by last name
         List<Person> sortedPersons = Person.query(Person.class)
                 .orderBy("last_name")
                 .execute();
         System.out.println("Sorted Persons: " + sortedPersons);
 
-        // Récupérer les personnes avec un tri descendant par salaire
+        // Retrieving persons sorted in descending order by salary
         List<Person> sortedDescPersons = Person.query(Person.class)
                 .orderByDesc("salary")
                 .execute();
         System.out.println("Sorted Desc Persons: " + sortedDescPersons);
 
-        // Récupérer les personnes avec une limite de résultats
+        // Retrieving a limited number of persons
         List<Person> limitedPersons = Person.query(Person.class)
                 .limit(1)
                 .execute();
         System.out.println("Limited Persons: " + limitedPersons);
 
-        // Récupérer les personnes avec un offset
+        // Retrieving persons with an offset
         List<Person> offsetPersons = Person.query(Person.class)
                 .offset(1)
                 .execute();
         System.out.println("Offset Persons: " + offsetPersons);
 
-        // Récupérer les adresses d'une personne spécifique
+        // Retrieving the addresses of a specific person
         List<Address> personAddresses = Address.query(Address.class)
                 .where("person_id", Operations.EQUALS, person1.getId())
                 .execute();
         System.out.println("Person Addresses: " + personAddresses);
 
-        // Récupérer les adresses avec une jointure sur la table des personnes
+        // Retrieving addresses with a join on the persons table
         List<Address> addressesWithJoin = Address.query(Address.class)
                 .join("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Join: " + addressesWithJoin);
 
-        // Récupérer les adresses avec une jointure gauche sur la table des personnes
+        // Retrieving addresses with a left join on the persons table
         List<Address> addressesWithLeftJoin = Address.query(Address.class)
                 .leftJoin("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Left Join: " + addressesWithLeftJoin);
 
-        // Récupérer les adresses avec une jointure droite sur la table des personnes
+        // Retrieving addresses with a right join on the persons table
         List<Address> addressesWithRightJoin = Address.query(Address.class)
                 .rightJoin("persons", "addresses.person_id", Operations.EQUALS, "persons.id")
                 .execute();
         System.out.println("Addresses with Right Join: " + addressesWithRightJoin);
 
-        // Récupérer les adresses groupées par ville
+        // Retrieving addresses grouped by city
         List<Address> addressesGroupedByCity = Address.query(Address.class)
                 .groupBy("city")
                 .execute();
         System.out.println("Addresses Grouped by City: " + addressesGroupedByCity);
 
-        // Récupérer les adresses avec une condition HAVING
+        // Retrieving addresses with a HAVING condition
         List<Address> addressesHavingCondition = Address.query(Address.class)
                 .groupBy("city")
                 .having("COUNT(city)", Operations.GREATER_THAN, 1)
                 .execute();
         System.out.println("Addresses with HAVING Condition: " + addressesHavingCondition);
 
-        // Supprimer toutes les personnes avec un critère (par exemple, âge supérieur à 30)
+        // Deleting all persons that meet a certain criteria (e.g., age greater than 30)
         Person.query(Person.class)
                 .execute()
                 .stream()
@@ -212,5 +212,6 @@ public class Main {
                         e.printStackTrace();
                     }
                 });
+
     }
 }
