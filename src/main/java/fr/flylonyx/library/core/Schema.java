@@ -1,5 +1,6 @@
 package fr.flylonyx.library.core;
 
+import fr.flylonyx.library.utils.ColumnType;
 import lombok.NonNull;
 
 import java.sql.Connection;
@@ -27,8 +28,8 @@ public class Schema {
         }
     }
 
-    public void addColumn(@NonNull String tableName, @NonNull String columnName, @NonNull String columnType) throws SQLException {
-        String sql = "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + columnType;
+    public void addColumn(@NonNull String tableName, @NonNull String columnName, @NonNull ColumnType columnType, Integer length, Integer precision, Integer scale) throws SQLException {
+        String sql = "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + columnType.formatType(length, precision, scale);
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(sql);
         }
