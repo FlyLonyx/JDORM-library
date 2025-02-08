@@ -42,9 +42,16 @@ publishing {
         maven {
             url = uri("https://maven.pkg.github.com/FlyLonyx/JDORM-library")
             credentials {
-                // Forcer la conversion en String en utilisant `toString()` pour éviter le type mismatch
-                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")).toString()
-                password = (project.findProperty("gpr.token") ?: System.getenv("MY_GITHUB_TOKEN")).toString()
+                // Vérifiez si les variables sont nulles avant d'appeler toString
+                val user = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                val token = project.findProperty("gpr.token") ?: System.getenv("MY_GITHUB_TOKEN")
+
+                if (user == null || token == null) {
+                    throw GradleException("GitHub username or token not set!")
+                }
+
+                username = user.toString()
+                password = token.toString()
             }
         }
     }
