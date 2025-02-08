@@ -40,11 +40,10 @@ publishing {
     }
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/FlyLonyx/JDORM-library")  // Remplacez par votre URL GitHub Packages
+            url = uri("https://maven.pkg.github.com/FlyLonyx/JDORM-library")
             credentials {
-                username = (project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")).toString()
-                password = (project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")).toString()
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }
