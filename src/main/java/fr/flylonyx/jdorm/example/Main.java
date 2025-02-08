@@ -1,23 +1,22 @@
-package fr.flylonyx.example;
+package fr.flylonyx.jdorm.example;
 
-import fr.flylonyx.example.migrations.AddPhoneNumberToPersons;
-import fr.flylonyx.example.migrations.CreateAddressesTable;
-import fr.flylonyx.example.migrations.CreatePersonsTable;
-import fr.flylonyx.example.migrations.ModifySalaryColumnInPersons;
-import fr.flylonyx.example.models.Address;
-import fr.flylonyx.example.models.Person;
-import fr.flylonyx.library.core.MigrationManager;
-import fr.flylonyx.library.core.Schema;
-import fr.flylonyx.library.database.Connection;
-import fr.flylonyx.library.utils.Operations;
-
-import java.sql.SQLException;
+import fr.flylonyx.jdorm.example.migrations.AddPhoneNumberToPersons;
+import fr.flylonyx.jdorm.example.migrations.CreateAddressesTable;
+import fr.flylonyx.jdorm.example.migrations.CreatePersonsTable;
+import fr.flylonyx.jdorm.example.migrations.ModifySalaryColumnInPersons;
+import fr.flylonyx.jdorm.example.models.Address;
+import fr.flylonyx.jdorm.example.models.Person;
+import fr.flylonyx.jdorm.library.core.MigrationManager;
+import fr.flylonyx.jdorm.library.core.Schema;
+import fr.flylonyx.jdorm.library.database.Connection;
+import fr.flylonyx.jdorm.library.utils.Operations;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws Exception, SQLException {
+    public static void main(String[] args) throws Exception {
 
+        Connection.configure("jdbc:mysql://", "localhost", "my_database", "my_user", "my_password");
         java.sql.Connection connection = Connection.getConnection();
         Schema schema = new Schema(connection);
 

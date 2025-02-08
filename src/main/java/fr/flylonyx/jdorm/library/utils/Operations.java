@@ -1,4 +1,4 @@
-package fr.flylonyx.library.utils;
+package fr.flylonyx.jdorm.library.utils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

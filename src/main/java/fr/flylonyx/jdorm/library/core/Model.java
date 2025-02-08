@@ -1,8 +1,8 @@
-package fr.flylonyx.library.core;
+package fr.flylonyx.jdorm.library.core;
 
-import fr.flylonyx.library.annotations.Column;
-import fr.flylonyx.library.annotations.Table;
-import fr.flylonyx.library.database.Connection;
+import fr.flylonyx.jdorm.library.annotations.Column;
+import fr.flylonyx.jdorm.library.annotations.Table;
+import fr.flylonyx.jdorm.library.database.Connection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

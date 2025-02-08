@@ -1,7 +1,7 @@
-package fr.flylonyx.library.core;
+package fr.flylonyx.jdorm.library.core;
 
 
-import fr.flylonyx.library.database.Connection;
+import fr.flylonyx.jdorm.library.database.Connection;
 import lombok.NonNull;
 
 import java.sql.*;

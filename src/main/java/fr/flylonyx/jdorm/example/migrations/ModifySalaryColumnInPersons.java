@@ -1,7 +1,7 @@
-package fr.flylonyx.example.migrations;
+package fr.flylonyx.jdorm.example.migrations;
 
-import fr.flylonyx.library.core.Schema;
-import fr.flylonyx.library.utils.ColumnType;
+import fr.flylonyx.jdorm.library.core.Schema;
+import fr.flylonyx.jdorm.library.utils.ColumnType;
 
 public class ModifySalaryColumnInPersons {
     public static void up(Schema schema) throws Exception {

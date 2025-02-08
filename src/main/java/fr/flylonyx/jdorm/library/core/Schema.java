@@ -1,6 +1,6 @@
-package fr.flylonyx.library.core;
+package fr.flylonyx.jdorm.library.core;
 
-import fr.flylonyx.library.utils.ColumnType;
+import fr.flylonyx.jdorm.library.utils.ColumnType;
 import lombok.NonNull;
 
 import java.sql.Connection;

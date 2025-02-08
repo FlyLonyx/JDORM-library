@@ -1,7 +1,7 @@
-package fr.flylonyx.example.migrations;
+package fr.flylonyx.jdorm.example.migrations;
 
-import fr.flylonyx.library.core.Schema;
-import fr.flylonyx.library.core.Table;
+import fr.flylonyx.jdorm.library.core.Schema;
+import fr.flylonyx.jdorm.library.core.Table;
 
 public class CreatePersonsTable {
     public static void up(Schema schema) throws Exception {

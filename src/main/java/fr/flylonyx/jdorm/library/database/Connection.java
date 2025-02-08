@@ -1,4 +1,4 @@
-package fr.flylonyx.library.database;
+package fr.flylonyx.jdorm.library.database;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

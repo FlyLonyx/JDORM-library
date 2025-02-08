@@ -1,9 +1,9 @@
-package fr.flylonyx.example.models;
+package fr.flylonyx.jdorm.example.models;
 
-import fr.flylonyx.library.annotations.Column;
-import fr.flylonyx.library.annotations.Table;
-import fr.flylonyx.library.core.Model;
-import fr.flylonyx.library.utils.Operations;
+import fr.flylonyx.jdorm.library.annotations.Column;
+import fr.flylonyx.jdorm.library.annotations.Table;
+import fr.flylonyx.jdorm.library.core.Model;
+import fr.flylonyx.jdorm.library.utils.Operations;
 import lombok.Getter;
 import lombok.Setter;
 
