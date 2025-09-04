@@ -225,21 +225,26 @@ public class QueryBuilder<T extends Model> {
      */
     public List<T> execute() throws Exception {
         List<T> results = new ArrayList<>();
-        try (Statement stmt = Connection.getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery(query.toString())) {
+        try (PreparedStatement stmt = Connection.getConnection().prepareStatement(query.toString())) {
+            for (int i = 0; i < parameters.size(); i++) {
+                stmt.setObject(i + 1, parameters.get(i));
+            }
 
-            while (rs.next()) {
-                T instance = clazz.getDeclaredConstructor().newInstance();
-                for (Field field : clazz.getDeclaredFields()) {
-                    if (field.isAnnotationPresent(Column.class)) {
-                       Column column = field.getAnnotation(Column.class);
-                        field.setAccessible(true);
-                        field.set(instance, rs.getObject(column.name()));
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    T instance = clazz.getDeclaredConstructor().newInstance();
+                    for (Field field : clazz.getDeclaredFields()) {
+                        if (field.isAnnotationPresent(Column.class)) {
+                            Column column = field.getAnnotation(Column.class);
+                            field.setAccessible(true);
+                            field.set(instance, rs.getObject(column.name()));
+                        }
                     }
+                    results.add(instance);
                 }
-                results.add(instance);
             }
         }
+
         return results;
     }
 }
